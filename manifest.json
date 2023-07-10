@@ -11,10 +11,14 @@
   "action": {
     "default_popup": "popup.html"
   },
-  "host_permissions": ["https://developer.chrome.com/*"],
-  "permissions": [
-    "tabGroups",
-    "background"
+
+"content_scripts": [
+    {
+      "js": ["scripts/content.js"],
+      "matches": [
+        "https://poshmark.com/closet/*"
+      ]
+    }
   ]
 }
 /* Might need to revisit the "background" permissions. See https://developer.chrome.com/docs/extensions/mv3/service_workers/basics/
