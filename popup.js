@@ -14,6 +14,14 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+document.addEventListener("DOMContentLoaded", () => {
+  const button = document.getElementById("sharefollowers");
+  button.addEventListener("click", () => {
+    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+      chrome.tabs.sendMessage(tabs[0].id, { type: "share-to-followers" });
+    });
+  });
+});
 
 //function myFunction() {
 //	var elements = document.getElementsByClassName("d--fl ai--c social-action-bar__action social-action-bar__share"); // get all elements
