@@ -22,7 +22,8 @@ for(var i = 0; i < about.length; i++)
   }
 });
 
-//Attempting to detect the share pop-up window. Do more research on: https://developer.chrome.com/docs/extensions/reference/windows/#event-onCreated
+//Attempting to detect the share pop-up window. Do more research on: https://developer.chrome.com/docs/extensions/reference/windows/#event-onCreated. 
+//Should detect the specific pop-up, and then click the To My Followers icon.
 chrome.windows.onCreated.addListener(
   callback: function,
   filters: "popup",
