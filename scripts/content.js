@@ -16,7 +16,7 @@ for(var i = 0; i < about.length; i++)
 });
 
 
-// Click "Share Your Listings" in extension to click "Share" for the last visible listing on the page.
+// Click "Share Your Listings" in extension to click "Share" for the last visible listing on the page. This works. 
 //commenting this out as a test
 //chrome.runtime.onMessage.addListener((message) => {
 //  if (message.type === "share-my") {
@@ -26,18 +26,18 @@ for(var i = 0; i < about.length; i++)
 //  }
 //});
 
-// Click "Share to My Followers" in extension to click "Share" for the last visible listing on the page.This finally works! Test if this works when there's a Posh party, bc then there are 2 possible links.
+// Click "Share to My Followers" in extension to click "Share" for the last visible listing on the page. This finally works! Test if this works when there's a Posh party, bc then there are 2 possible links.
 chrome.runtime.onMessage.addListener((message) => {
   if (message.type === "share-to-followers") {
     document.getElementsByClassName('internal-share__link')[0].click();
   }
 });
 
-// try using functions to click the share buttons. So far this doesn't work.
+// try using functions to click the share buttons. This works!
 // Click "Share Your Listings" in extension to click "Share" for the last visible listing on the page.
 chrome.runtime.onMessage.addListener((message) => {
   if (message.type === "share-my") {
-function shareMy1()
+shareMy1();
   }
 });
 
@@ -45,6 +45,12 @@ function shareMy1() {
   var listing = document.getElementsByClassName("d--fl ai--c social-action-bar__action social-action-bar__share");
   for(var i = 0; i < listing.length; i++)
   {listing[i].click();}
+}
+
+
+//still testing this.
+function shareMy2() {
+  document.getElementsByClassName('internal-share__link')[0].click();
 }
 
 //Next tasks:
