@@ -41,6 +41,7 @@ shareMy1();
   }
 });
 
+//Function to click the 1st button in the Share process. This works!
 function shareMy1() {
   var listing = document.getElementsByClassName("d--fl ai--c social-action-bar__action social-action-bar__share");
   for(var i = 0; i < listing.length; i++)
@@ -48,10 +49,14 @@ function shareMy1() {
 }
 
 
-//still testing this.
+//Function to click the 2nd button in the Share process. This works!
 function shareMy2() {
-  document.getElementsByClassName('internal-share__link')[0].click();
+  var shareToFollowers = document.getElementsByClassName('internal-share__link');
+  for(var i = 0; i < shareToFollowers.length; i++)
+  {shareToFollowers[i].click();}
 }
+
+//Create a callback so that one function triggers the next.
 
 //Next tasks:
 //String together 2 clicks: click share, detect that the pop-up is open, and then click other share.
