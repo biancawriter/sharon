@@ -1,24 +1,33 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const button = document.getElementById("about");
-  button.addEventListener("click", () => {
+  const buttonAbout = document.getElementById("about");
+  buttonAbout.addEventListener("click", () => {
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
       chrome.tabs.sendMessage(tabs[0].id, { type: "about-me" });
     });
   });
 });
 document.addEventListener("DOMContentLoaded", () => {
-  const button = document.getElementById("sharemy");
-  button.addEventListener("click", () => {
+  const buttonShareMy = document.getElementById("sharemy");
+  buttonShareMy.addEventListener("click", () => {
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
       chrome.tabs.sendMessage(tabs[0].id, { type: "share-my" });
     });
   });
 });
 document.addEventListener("DOMContentLoaded", () => {
-  const button = document.getElementById("sharefollowers");
-  button.addEventListener("click", () => {
+  const buttonShareFollowers = document.getElementById("sharefollowers");
+  buttonShareFollowers.addEventListener("click", () => {
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
       chrome.tabs.sendMessage(tabs[0].id, { type: "share-to-followers" });
+    });
+  });
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const buttonStop = document.getElementById("stop");
+  buttonStop.addEventListener("click", () => {
+    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+      chrome.tabs.sendMessage(tabs[0].id, { type: "stop-sharing" });
     });
   });
 });

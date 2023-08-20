@@ -26,7 +26,7 @@ for(var i = 0; i < about.length; i++)
 //  }
 //});
 
-// Click "Share to My Followers" in extension to click "Share" for the last visible listing on the page. This finally works! Test if this works when there's a Posh party, bc then there are 2 possible links.
+// Click "Share to My Followers" in extension to click "Share" for the last visible listing on the page. This works! 
 chrome.runtime.onMessage.addListener((message) => {
   if (message.type === "share-to-followers") {
     document.getElementsByClassName('internal-share__link')[0].click();
@@ -35,18 +35,58 @@ chrome.runtime.onMessage.addListener((message) => {
 
 // try using functions to click the share buttons. This works!
 // Click "Share Your Listings" in extension to click "Share" for the last visible listing on the page.
+//Somehow, having this in the code causes the function waitForElement function to run; I don't even click the button! Will need to fix this.
 chrome.runtime.onMessage.addListener((message) => {
   if (message.type === "share-my") {
-shareMy1();
+    waitForElement();
+  }
+});
+
+// Click "Stop All Sharing" in extension to stop all sharing. Doesn't work: clickShareButton, shareLinkCount, element. Need to figure out how to fix this. Although the issue might be with the "Share My" button, and NOT with this snippet.
+chrome.runtime.onMessage.addListener((message) => {
+  if (message.type === "stop-sharing") {
+    clearTimeout(waitForElement);
   }
 });
 
 //Function to click the 1st button in the Share process. This works!
-function shareMy1() {
-  var listing = document.getElementsByClassName("d--fl ai--c social-action-bar__action social-action-bar__share");
-  for(var i = 0; i < listing.length; i++)
-  {listing[i].click();}
+//comment out to test querySelector
+//function shareMy1() {
+//  var listing = document.getElementsByClassName("d--fl ai--c social-action-bar__action social-action-bar__share");
+// for(var i = 0; i < listing.length; i++)
+//  {listing[i].click();}
+//}
+
+//Function to click both buttons
+function waitForElement(selector) {
+  var element = document.querySelector(selector);
+  if (element) {
+      shareLinkCount--;
+      element.click();
+
+      if (shareLinkCount) { // not 0, this is the 1st share 
+          setTimeout(clickShareButton, 1000);
+      }
+      else{
+          element.click();
+          alert('Click Finished');
+      }
+  } else {
+      setTimeout(waitForElement, 1000, selector);
+  }
 }
+
+function clickShareButton() {
+  document.querySelectorAll('.share-gray-large')[shareLinkCount].click();
+  waitForElement('.internal-share__link');
+}
+
+var shareLinkCount = document.querySelectorAll('.share-gray-large').length - 1;
+
+const notSold
+
+
+clickShareButton();
 
 
 //Function to click the 2nd button in the Share process. This works!
