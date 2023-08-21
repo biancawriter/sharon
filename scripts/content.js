@@ -65,7 +65,7 @@ function waitForElement(selector) {
       element.click();
 
       if (shareLinkCount) { // not 0, this is the 1st share 
-          setTimeout(clickShareButton, 1000);
+          setTimeout(clickShareButton, 6000);
       }
       else{
           element.click();
@@ -83,7 +83,7 @@ function clickShareButton() {
 
 var shareLinkCount = document.querySelectorAll('.share-gray-large').length - 1;
 
-const notSold
+//const notSold
 
 
 clickShareButton();
