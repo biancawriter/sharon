@@ -10,6 +10,21 @@ function function1 () {
   const wait2 = 8000;
   const startAgain = (wait1 + wait2) * 100;
 
+const clickItem = (item) => {
+  item.click();
+}
+
+const itemAvailable = (item) => {
+  return (
+    item
+      .closest(".card")
+      .querySelectorAll(".sold-tag,.sold-out-tag,.not-for-sale-tag")
+      .length === 0
+  );
+}
+
+
+
 
 function function2 () {
 var shareLinkCount = document.querySelectorAll('.share-gray-large').length - 1; 
