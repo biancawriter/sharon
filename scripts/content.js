@@ -5,6 +5,29 @@ chrome.runtime.onMessage.addListener((message) => {
   }
 });
 
+// Click "Scroll to bottom of page" in extension to scroll. If you have a lot of items, we recommend filtering by Available before you run the extension.
+chrome.runtime.onMessage.addListener((message) => {
+  if (message.type === "scroll-to-bottom") {
+    scrollToBottomAndWait();
+  }
+});
+
+const scrollToBottomAndWait = () => {
+  window.scrollTo(0, document.body.scrollHeight);
+
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      const isScrolledToBottom =
+        window.innerHeight + window.scrollY >= document.body.scrollHeight;
+      if (!isScrolledToBottom) {
+        resolve(scrollToBottomAndWait());
+      } else {
+        resolve();
+      }
+    }, 2000);
+  });
+};
+
 function function1 () {
   const wait1 = 1000;
   const wait2 = 8000;
