@@ -1,7 +1,3 @@
-//Goal of this round: Repeat the cycle. Incorporate the approach from: https://stackoverflow.com/questions/66718421/how-do-you-repeatedly-click-two-buttons-when-you-have-to-wait-for-the-second-but 
-
-
-
 // Click "Share My Listings" in extension to click "Share" for the last visible listing on the page.
 chrome.runtime.onMessage.addListener((message) => {
   if (message.type === "share-my") {
@@ -19,22 +15,42 @@ chrome.runtime.onMessage.addListener((message) => {
 
 
 function function1 () {
+  const wait1 = 1000;
+  const wait2 = 8000;
+  const startAgain = (wait1 + wait2) * 100;
 
-var waitForFirstClick = 8000;
-var waitForSecondClick = 2000;
+const clickItem = (item) => {
+  item.click();
+}
+
+const itemAvailable = (item) => {
+  return (
+    item
+      .closest(".card")
+      .querySelectorAll(".sold-tag,.sold-out-tag,.not-for-sale-tag")
+      .length === 0
+  );
+}
+
+const scrollToBottomAndWait = () => {
+  window.scrollTo(0, document.body.scrollHeight);
+
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      const isScrolledToBottom =
+        window.innerHeight + window.scrollY >= document.body.scrollHeight;
+      if (!isScrolledToBottom) {
+        resolve(scrollToBottomAndWait());
+      } else {
+        resolve();
+      }
+    }, 2000);
+  });
+};
 
 
 function function2 () {
-var shareLinkCount = document.querySelectorAll('.share-gray-large').length - 1;
-
-function endOrContinue () {
-  if(shareLinkCount != 0) {
-    setTimeout(clickFirstShare, waitForFirstClick); //Call the clickFirstShare function in 15 sec to re-start the cycle.
-  }
-  else{
-    setTimeout(function2, waitForFirstClick);
-  }
-}
+var shareLinkCount = document.querySelectorAll('.share-gray-large').length - 1; 
 
 function shareToFollowers () {
   document.querySelector('.internal-share__link').click();
@@ -49,18 +65,22 @@ function done() {
   alert('All done!');
 }
 
+const timeToClickFirst = setTimeout(shareToFollowers, 2000); //using these as functions didn't work
+const timeToClickSecond = setTimeout(clickFirstShare, 8000);
+
 //Function to click both buttons after the process has started.
 function afterFirstShare() {
-  --shareLinkCount;
-  setTimeout(shareToFollowers, waitForSecondClick); //Click the 2nd share button in 2 sec.
-  setTimeout(endOrContinue, 3000);
+  setTimeout(shareToFollowers, 2000); //Click the 2nd share button in 2 sec.
+  shareLinkCount--; //Decrement the shareLinkCount #
+  setTimeout(clickFirstShare, 8000); //Call the clickFirstShare function in 15 sec to re-start the cycle.
   }
 
   clickFirstShare(); //after defining the functions, call the starting one.
 }
 
-
+scrollToBottomAndWait();
 function2();
+setInterval(function2, startAgain);
 
 
 // Click "Stop All Sharing" in extension to stop all sharing.
