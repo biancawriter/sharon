@@ -28,6 +28,7 @@ var shareLinkCount = document.querySelectorAll('.share-gray-large').length - 1;
 //var itemToShare = document.querySelectorAll('.share-gray-large')[shareLinkCount];
 //var itemName = document.querySelectorAll('.share-gray-large')[shareLinkCount].closest(".card").querySelector(".tile__title").innerHTML; 
 
+
 function endOrContinue () {
   if(shareLinkCount != 0) {
     setTimeout(clickFirstShare, waitForFirstClick); //Call the clickFirstShare function in 15 sec to re-start the cycle.
@@ -42,16 +43,20 @@ function shareToFollowers () {
 }
 
 function clickFirstShare() { //Defines how the clickFirstShare function works.  
-  document.querySelectorAll('.share-gray-large')[shareLinkCount].click(); //First, it creates a NodeList of all elements with the attribute '.share-gray-large'. Second, it picks an item from the NodeList based on the # returned by the shareLinkCount variable. Third, it clicks that item.
-  console.log(shareLinkCount); //this works 
-  console.log(document.querySelectorAll('.share-gray-large')[shareLinkCount].closest(".card").querySelector(".tile__title").innerHTML); //FINALLY WORKS!
+  var itemStatus = document.querySelectorAll('.share-gray-large')[shareLinkCount].closest(".card").querySelector(".sold-tag"); //if the item is NOT sold, returns "null"
+
+  if(itemStatus === null) {
+    document.querySelectorAll('.share-gray-large')[shareLinkCount].click(); //First, it creates a NodeList of all elements with the attribute '.share-gray-large'. Second, it picks an item from the NodeList based on the # returned by the shareLinkCount variable. Third, it clicks that item.
+    console.log(shareLinkCount); 
+    console.log(document.querySelectorAll('.share-gray-large')[shareLinkCount].closest(".card").querySelector(".tile__title").innerHTML); 
   
-  
-  afterFirstShare();//Calls the afterFirstShare function.
+    afterFirstShare();//Calls the afterFirstShare function.
+}
+else{
+  --shareLinkCount; //doesn't work when there are Sold items. Throws an error.
+  clickFirstShare();
 }
 
-function done() {
-  alert('All done!');
 }
 
 //Function to click both buttons after the process has started.
@@ -61,9 +66,8 @@ function afterFirstShare() {
   setTimeout(endOrContinue, 3000);
   }
 
-  clickFirstShare(); //after defining the functions, call the starting one.
+clickFirstShare(); //after defining the functions, call the starting one.
 }
-
 
 function2();
 
