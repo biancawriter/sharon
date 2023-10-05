@@ -1,38 +1,34 @@
-//Goal of this round: Repeat the cycle. Incorporate the approach from: https://stackoverflow.com/questions/66718421/how-do-you-repeatedly-click-two-buttons-when-you-have-to-wait-for-the-second-but 
-
+var cancelled = false;
 
 
 // Click "Share My Listings" in extension to click "Share" for the last visible listing on the page.
 chrome.runtime.onMessage.addListener((message) => {
   if (message.type === "share-my") {
-    function1();
+    cancelled = false;
+    function2();
   }
 });
 
-// Click "Scroll to bottom of page" in extension to scroll. If you have a lot of items, we recommend filtering by Available before you run the extension.
+
+// Click "Stop All Sharing" in extension to stop all sharing.
 chrome.runtime.onMessage.addListener((message) => {
-  if (message.type === "scroll-to-bottom") {
-    scrollToBottomAndWait();
+  if (message.type === "stop-sharing") {
+    cancelled = true;
   }
 });
 
-
-
-function function1 () {
-
-var waitForFirstClick = 8000;
-var waitForSecondClick = 2000;
 
 function function2 () {
+var waitForFirstClick = 8000;
+var waitForSecondClick = 2000;
 var shareLinkCount = document.querySelectorAll('.share-gray-large').length - 1;
 
-
 function endOrContinue () {
-  if(shareLinkCount != 0) {
-    setTimeout(clickFirstShare, waitForFirstClick); //Call the clickFirstShare function in 15 sec to re-start the cycle.
+  if(shareLinkCount < 0) {
+    setTimeout(function2, waitForFirstClick);
   }
   else{
-    setTimeout(function2, waitForFirstClick);
+    setTimeout(clickFirstShare, waitForFirstClick); //Call the clickFirstShare function in 15 sec to re-start the cycle.
   }
 }
 
@@ -41,8 +37,14 @@ function shareToFollowers () {
 }
 
 function clickFirstShare() {  
+  
   var itemToShare = document.querySelectorAll('.share-gray-large')[shareLinkCount]; //First, it creates a NodeList of all elements with the attribute '.share-gray-large'. Second, it picks an item from the NodeList based on the # returned by the shareLinkCount variable.
   var itemStatus = itemToShare.closest(".card").querySelector(".sold-tag, .sold-out-tag, .not-for-sale-tag"); //if the item is NOT sold, returns "null"
+
+  if (cancelled) {
+    console.log('All done!');
+    return;
+  }
 
   if(itemStatus === null) {
     itemToShare.click(); 
@@ -68,14 +70,8 @@ function afterFirstShare() {
 clickFirstShare(); //after defining the functions, call the starting one.
 }
 
-function2();
 
 
-// Click "Stop All Sharing" in extension to stop all sharing.
-chrome.runtime.onMessage.addListener((message) => {
-  if (message.type === "stop-sharing") {
-    clearTimeout(); //figure out how to clear
-  }
-});
-}
+
+
 
