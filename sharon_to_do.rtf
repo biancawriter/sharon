@@ -5,8 +5,9 @@
 {\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}
 {\list\listtemplateid2\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid101\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{hyphen\}}{\leveltext\leveltemplateid102\'01\uc0\u8259 ;}{\levelnumbers;}\fi-360\li1440\lin1440 }{\listname ;}\listid2}
 {\list\listtemplateid3\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid201\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid3}
-{\list\listtemplateid4\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid301\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid4}}
-{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}{\listoverride\listid3\listoverridecount0\ls3}{\listoverride\listid4\listoverridecount0\ls4}}
+{\list\listtemplateid4\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid301\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid4}
+{\list\listtemplateid5\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid401\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid5}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}{\listoverride\listid3\listoverridecount0\ls3}{\listoverride\listid4\listoverridecount0\ls4}{\listoverride\listid5\listoverridecount0\ls5}}
 \margl1440\margr1440\vieww15360\viewh11400\viewkind0
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
 
@@ -25,17 +26,37 @@ Later: \
 {\listtext	\uc0\u8259 	}When you click stop sharing, show a pop-up.\
 {\listtext	\uc0\u8259 	}If you stop and then re-start without refreshing the page, pick up where you left off.\
 \pard\tx220\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\fi-720\pardirnatural\partightenfactor0
-\ls2\ilvl0\cf0 {\listtext	\uc0\u8226 	}\'93scroll down\'94 to see all items, including for 100s of listings. Wait until after the 2nd click to log an items as shared. \
+\ls2\ilvl0\cf0 {\listtext	\uc0\u8226 	}\'93scroll down\'94 to see all items, including for 100s of listings. Wait until after the 2nd click to log an items as shared. Currently goes to about 46 items.\
 {\listtext	\uc0\u8226 	}Add a timestamp to console.\
 {\listtext	\uc0\u8226 	}Respond to "captcha": Make a sound, send an email....\
 {\listtext	\uc0\u8226 	}Add a log to the UI that shows shared listings w/ timestamps. \
 {\listtext	\uc0\u8226 	}Share from top to bottom.\
 {\listtext	\uc0\u8226 	}Run when computer is asleep: {\field{\*\fldinst{HYPERLINK "https://stackoverflow.com/questions/9206982/run-chrome-extension-in-the-background?rq=4"}}{\fldrslt https://stackoverflow.com/questions/9206982/run-chrome-extension-in-the-background?rq=4}} \
+{\listtext	\uc0\u8226 	}Find a better way to handle clicking \'93share\'94 in the feed. The app gets confused because it doesn\'92t know the name of the item, so it can\'92t log the name in the console. Might have add a pop-up saying \'93there\'92s nothing to share on this page\'94 or similar if you try to run an app on a page that\'92s not supported. Or add a way to share items on that page. \
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
 \cf0 \
-\'93Branding\'94\
+Completed:\
 \pard\tx220\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\fi-720\pardirnatural\partightenfactor0
-\ls3\ilvl0\cf0 {\listtext	\uc0\u8226 	}Icon for toolbar\
+\ls3\ilvl0\cf0 {\listtext	\uc0\u8226 	}\
+{\listtext	\uc0\u8226 	}Avoid the "click finished" pop-up. This is an alert in the code.\
+{\listtext	\uc0\u8226 	}Make sure the clicking is only triggered by clicking the button, and not by just being on the page\
+{\listtext	\uc0\u8226 	}Runs in order\
+{\listtext	\uc0\u8226 	}Restarts the cycle\
+{\listtext	\uc0\u8226 	}Logs the name & # of the shared item in the console.\
+{\listtext	\uc0\u8226 	}Shares only available listings!!! \
+{\listtext	\uc0\u8226 	}Share the \'93last\'94 item in the list (which is the top left item). I think this is skipped because its position is 0.\
+{\listtext	\uc0\u8226 	}Make "Stop Sharing" work\
+{\listtext	\uc0\u8226 	}Works on closets, parties, and brands.\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+\'97\'97\'97\'97\'97\'97 \
+\
+\'93Branding\'94\
+\
+To-do:\
+\
+\pard\tx220\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\fi-720\pardirnatural\partightenfactor0
+\ls4\ilvl0\cf0 Icon for toolbar\
 {\listtext	\uc0\u8226 	}Submit to Chrome store\
 {\listtext	\uc0\u8226 	}website/domain\
 {\listtext	\uc0\u8226 	}email for domain\
@@ -49,13 +70,6 @@ Later: \
 \
 Completed:\
 \pard\tx220\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\fi-720\pardirnatural\partightenfactor0
-\ls4\ilvl0\cf0 {\listtext	\uc0\u8226 	}\
-{\listtext	\uc0\u8226 	}Avoid the "click finished" pop-up. This is an alert in the code.\
-{\listtext	\uc0\u8226 	}Make sure the clicking is only triggered by clicking the button, and not by just being on the page\
-{\listtext	\uc0\u8226 	}Runs in order\
-{\listtext	\uc0\u8226 	}Restarts the cycle\
-{\listtext	\uc0\u8226 	}Logs the name & # of the shared item in the console.\
-{\listtext	\uc0\u8226 	}Shares only available listings!!! \
-{\listtext	\uc0\u8226 	}Share the \'93last\'94 item in the list (which is the top left item). I think this is skipped because its position is 0.\
-{\listtext	\uc0\u8226 	}Make "Stop Sharing" work\
+\ls5\ilvl0\cf0 {\listtext	\uc0\u8226 	}Created custom icons\
+{\listtext	\uc0\u8226 	}\
 }
