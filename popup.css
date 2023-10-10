@@ -1,5 +1,7 @@
 body {
   width: 20rem;
+/*  height: 20rem; */
+  margin: 1.5rem;
 }
 
 ul {
@@ -18,7 +20,32 @@ li:nth-child(even) {
   background: #ffffff;
 }
 
+h1 {
+  margin: 0;
+  text-align: center;
+  color: black;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
 h3,
 p {
   margin: 0;
+}
+
+.button-container {
+  display: flex;
+  /*justify-content: center; */
+  justify-content: space-around;
+}
+
+button
+{
+  width: 40%;
+  margin-top: 1.5rem;
+  padding: 12px;
+  background: #dde1e7;
+  font-size: 17px;
+  font-weight: 600;
+  border: 2px solid black;
+  border-radius: 8px;
 }
