@@ -28,6 +28,15 @@ var waitForSecondClick = 2000;
 var shareLinkCount = document.querySelectorAll('.share-gray-large').length - 1;
 
 function endOrContinue () {
+
+  if (cancelled) { // test
+    console.log('All done!');
+    alert("Nothin' to see here, folks!");
+    return;
+  }
+
+  else{
+
   if(shareLinkCount < 0) {
     setTimeout(function2, waitForFirstClick);
   }
@@ -35,8 +44,16 @@ function endOrContinue () {
     setTimeout(clickFirstShare, waitForFirstClick); //Call the clickFirstShare function in 15 sec to re-start the cycle.
   }
 }
+}
 
 function shareToFollowers () {
+
+  if (cancelled) { // test
+    console.log('All done!');
+    alert("Nothin' to see here, folks!");
+    return;
+  }
+
   document.querySelector('.internal-share__link').click();
   console.log(shareLinkCount); //Print the NodeList position of the item that was just shared. 
   console.log(itemName); //Print the name of the item that was just shared. 
@@ -47,9 +64,10 @@ function clickFirstShare() {
   var itemToShare = document.querySelectorAll('.share-gray-large')[shareLinkCount]; //First, it creates a NodeList of all elements with the attribute '.share-gray-large'. Second, it picks an item from the NodeList based on the # returned by the shareLinkCount variable.
   var itemStatus = itemToShare.closest(".card").querySelector(".sold-tag, .sold-out-tag, .not-for-sale-tag"); //if the item is NOT sold, returns "null"
 
-  if (cancelled) {
-    console.log('All done!');
-    return;
+ if (cancelled) {
+   console.log('All done!');
+   alert("Nothin' to see here, folks!");
+  return;
   }
 
   if(itemStatus === null) {
@@ -68,15 +86,14 @@ else{
 
 //Function to click both buttons after the process has started.
 function afterFirstShare() {
-  if (cancelled) { //test. this didn't seem to work. 
+  if (cancelled) { // test
     console.log('All done!');
+    alert("Nothin'vto see here, folks!");
     return;
   }
-  else{ 
   --shareLinkCount;
   setTimeout(shareToFollowers, waitForSecondClick); //Click the 2nd share button in 2 sec.
   setTimeout(endOrContinue, 3000);
-  }
 }
 
 clickFirstShare(); //after defining the functions, call the starting one.
