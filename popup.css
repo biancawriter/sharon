@@ -2,34 +2,16 @@ body {
   width: 20rem;
 /*  height: 20rem; */
   margin: 1.5rem;
+  background-color: #f9f9fc;
+  border-radius: 8px;
 }
 
-ul {
-  list-style-type: none;
-  padding-inline-start: 0;
-  margin: 1rem 0;
-}
-
-li {
-  padding: 0.25rem;
-}
-li:nth-child(odd) {
-  background: #80808030;
-}
-li:nth-child(even) {
-  background: #ffffff;
-}
 
 h1 {
   margin: 0;
   text-align: center;
-  color: black;
+  color: #353131;
   font-family: Helvetica, Arial, sans-serif;
-}
-
-h3,
-p {
-  margin: 0;
 }
 
 .button-container {
@@ -43,9 +25,20 @@ button
   width: 40%;
   margin-top: 1.5rem;
   padding: 12px;
-  background: #dde1e7;
+  background: #d8dbdf;
   font-size: 17px;
   font-weight: 600;
-  border: 2px solid black;
+  color: #353131;
+  border: 1px solid #353131;
   border-radius: 8px;
+}
+
+button:hover {
+  background-color: #3e8e41;
+}
+
+button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
 }
