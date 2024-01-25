@@ -1,5 +1,6 @@
 var cancelled = false;
 var isSharing = false;
+var itemName = "the name"; // Is later used to print the name of the item just shared in the Console.
 
 
 // Click "Share My Listings" in extension to click "Share" for the last visible listing on the page.
@@ -37,6 +38,8 @@ function endOrContinue () {
 
 function shareToFollowers () {
   document.querySelector('.internal-share__link').click();
+  console.log(shareLinkCount); //Print the NodeList position of the item that was just shared. 
+  console.log(itemName); //Print the name of the item that was just shared. 
 }
 
 function clickFirstShare() {  
@@ -51,13 +54,14 @@ function clickFirstShare() {
 
   if(itemStatus === null) {
     itemToShare.click(); 
-    console.log(shareLinkCount); 
-    console.log(itemToShare.closest(".card").querySelector(".tile__title").innerHTML); 
+   // console.log(shareLinkCount); 
+    itemName = itemToShare.closest(".card").querySelector(".tile__title").innerHTML; //Set the name of the item that's about to be shared.
+
   
     afterFirstShare();//Calls the afterFirstShare function.
 }
 else{
-  --shareLinkCount; //doesn't work when there are Sold items. Throws an error.
+  --shareLinkCount; 
   clickFirstShare();
 }
 
