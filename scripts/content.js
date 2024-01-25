@@ -1,10 +1,12 @@
 var cancelled = false;
+var isSharing = false;
 
 
 // Click "Share My Listings" in extension to click "Share" for the last visible listing on the page.
 chrome.runtime.onMessage.addListener((message) => {
-  if (message.type === "share-my") {
+  if (message.type === "share-my" && isSharing === false) {
     cancelled = false;
+    isSharing = true;
     function2();
   }
 });
@@ -14,6 +16,7 @@ chrome.runtime.onMessage.addListener((message) => {
 chrome.runtime.onMessage.addListener((message) => {
   if (message.type === "stop-sharing") {
     cancelled = true;
+    isSharing = false;
   }
 });
 
