@@ -7,35 +7,15 @@ const tabs = await chrome.tabs.query({
   ]
 });
 
-// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Collator
-const collator = new Intl.Collator();
-tabs.sort((a, b) => collator.compare(a.title, b.title));
-
-const template = document.getElementById('li_template');
-const elements = new Set();
-for (const tab of tabs) {
-  const element = template.content.firstElementChild.cloneNode(true);
-
-  const title = tab.title.split('-')[0].trim();
-  const pathname = new URL(tab.url).pathname.slice('/docs'.length);
-
-  element.querySelector('.title').textContent = title;
-  element.querySelector('.pathname').textContent = pathname;
-  element.querySelector('a').addEventListener('click', async () => {
-    // need to focus window as well as the active tab
-    await chrome.tabs.update(tab.id, { active: true });
-    await chrome.windows.update(tab.windowId, { focused: true });
-  });
-
-  elements.add(element);
-}
 document.querySelector('ul').append(...elements);
-
-const button = document.querySelector('button');
-button.addEventListener('click', async () => {
+// need to figure out how to create JavaScript to specific buttons. I'm trying to reference "shareyour" below, but I don't think it works. 
+const shareyour = document.querySelector('shareyour');
+shareyour.addEventListener('click', async () => {
   const tabIds = tabs.map(({ id }) => id);
   if (tabIds.length) {
     const group = await chrome.tabs.group({ tabIds });
     await chrome.tabGroups.update(group, { title: 'DOCS' });
   }
 });
+// logic should be: When you click "share your" in the extension, click the Share element for one unsold listing in your closet. Continue sharing 1 unsold listing at a time, in random order. Should stop when user click "Stop All Shares".
+// Add a per-minute limit. 
