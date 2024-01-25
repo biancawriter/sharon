@@ -23,24 +23,24 @@ function waitForElement(selector) {
       shareLinkCount--;
       element.click();
 
-      if (shareLinkCount) { // not 0, this is the 1st share 
-          setTimeout(clickShareButton, 10000);
+      if (shareLinkCount) { 
+          setTimeout(clickShareButton, 10000); // Share a new item every 10 seconds.
       }
       else{
           element.click();
-          clickShareButton(); //not sure if this will work. I replaced the "click finished" with clickShareButton function
+          clickShareButton(); // My intent here was to re-start at the first item after the script has shared all the items one time. This doesn't seem to work.
       }
   } else {
-      setTimeout(waitForElement, 2000, selector); //this is the 2nd share
+      setTimeout(waitForElement, 2000, selector); //When the pop-up window opens, wait 2 seconds to share the item.
   }
 }
 
 function clickShareButton() {
-  document.querySelectorAll('.share-gray-large')[shareLinkCount].click();
-  waitForElement('.internal-share__link');
-}
+  document.querySelectorAll('.button1')[shareLinkCount].click();
+  waitForElement('.button2');
+}//Defines the function to share the item on the page. 
 
-var shareLinkCount = document.querySelectorAll('.share-gray-large').length - 1; //creates variable for identifying the 1st share, and then cycling through all elements with this style.
+var shareLinkCount = document.querySelectorAll('.button1').length - 1; // Creates variable for identifying the 1st share, and then cycling through all elements with this style.
 
 // Click "Share My Listings" in extension to click "Share" for the last visible listing on the page.
 chrome.runtime.onMessage.addListener((message) => {
@@ -48,3 +48,16 @@ chrome.runtime.onMessage.addListener((message) => {
     clickShareButton();
   }
 });
+
+
+
+//Next tasks:
+//MVP:
+//Continue to share listings when you get through the first cycle
+//Only share Available listings
+//Make "Stop Sharing" work
+//Avoid the "click finished" pop-up. This is an alert in the code.
+//Make sure the clicking is only triggered by clicking the button, and not by just being on the page
+//Might have to re-add calling the clickShareButton() function
+//Later: 
+//Respond to "captcha": Make a sound, send an email....
