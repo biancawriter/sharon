@@ -2,6 +2,21 @@ var cancelled = false;
 var isSharing = false;
 var itemName = "the name"; // Is later used to print the name of the item just shared in the Console.
 
+var alarm = new Audio('images/515823__matrixxx__select-granted-04.wav');
+
+
+
+function playAudio() {
+alarm.play;
+}
+
+// Click "Beeps" in extension to play the Beep sound.
+chrome.runtime.onMessage.addListener((message) => {
+  if (message.type === "play-beep") {
+    playAudio;
+  }
+});
+
 
 // Click "Share My Listings" in extension to click "Share" for the last visible listing on the page.
 chrome.runtime.onMessage.addListener((message) => {
@@ -11,7 +26,6 @@ chrome.runtime.onMessage.addListener((message) => {
     function2();
   }
 });
-
 
 // Click "Stop All Sharing" in extension to stop all sharing.
 chrome.runtime.onMessage.addListener((message) => {
