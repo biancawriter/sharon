@@ -12,5 +12,12 @@
     "default_popup": "popup.html"
   },
   "host_permissions": ["https://developer.chrome.com/*"],
-  "permissions": ["tabGroups"]
+  "permissions": [
+    "tabGroups",
+    "background"
+    "sidepanel"
+  ]
 }
+/* Might need to revisit the "background" permissions. See https://developer.chrome.com/docs/extensions/mv3/service_workers/basics/
+Also look into how to set up the sidepanel: https://developer.chrome.com/docs/extensions/reference/sidePanel/
+*/
