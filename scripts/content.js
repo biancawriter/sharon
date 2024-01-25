@@ -12,21 +12,7 @@ chrome.runtime.onMessage.addListener((message) => {
   }
 });
 
-const scrollToBottomAndWait = () => {
-  window.scrollTo(0, document.body.scrollHeight);
 
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      const isScrolledToBottom =
-        window.innerHeight + window.scrollY >= document.body.scrollHeight;
-      if (!isScrolledToBottom) {
-        resolve(scrollToBottomAndWait());
-      } else {
-        resolve();
-      }
-    }, 2000);
-  });
-};
 
 function function1 () {
   const wait1 = 1000;
@@ -46,7 +32,21 @@ const itemAvailable = (item) => {
   );
 }
 
+const scrollToBottomAndWait = () => {
+  window.scrollTo(0, document.body.scrollHeight);
 
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      const isScrolledToBottom =
+        window.innerHeight + window.scrollY >= document.body.scrollHeight;
+      if (!isScrolledToBottom) {
+        resolve(scrollToBottomAndWait());
+      } else {
+        resolve();
+      }
+    }, 2000);
+  });
+};
 
 
 function function2 () {
@@ -65,6 +65,9 @@ function done() {
   alert('All done!');
 }
 
+const timeToClickFirst = setTimeout(shareToFollowers, 2000); //using these as functions didn't work
+const timeToClickSecond = setTimeout(clickFirstShare, 8000);
+
 //Function to click both buttons after the process has started.
 function afterFirstShare() {
   setTimeout(shareToFollowers, 2000); //Click the 2nd share button in 2 sec.
@@ -75,7 +78,16 @@ function afterFirstShare() {
   clickFirstShare(); //after defining the functions, call the starting one.
 }
 
+scrollToBottomAndWait();
+function2();
+setInterval(function2, startAgain);
 
-  function2();
-  setInterval(function2, startAgain);
+
+// Click "Stop All Sharing" in extension to stop all sharing.
+chrome.runtime.onMessage.addListener((message) => {
+  if (message.type === "stop-sharing") {
+    clearTimeout(); //figure out how to clear
+  }
+});
 }
+
