@@ -3,10 +3,10 @@
   "name": "Sharon Listings in Poshmark",
   "version": "1.0",
   "icons": {
-    "16": "images/icon-16.png",
-    "32": "images/icon-32.png",
-    "48": "images/icon-48.png",
-    "128": "images/icon-128.png"
+    "16": "images/fire_16.png",
+    "32": "images/fire_32.png",
+    "48": "images/fire_48.png",
+    "128": "images/fire_128.png"
   },
   "action": {
     "default_popup": "popup.html"
@@ -16,11 +16,8 @@
     {
       "js": ["scripts/content.js"],
       "matches": [
-        "https://poshmark.com/closet/*"
+        "https://poshmark.com/*"
       ]
     }
   ]
 }
-/* Might need to revisit the "background" permissions. See https://developer.chrome.com/docs/extensions/mv3/service_workers/basics/
-Also look into how to set up the sidepanel: https://developer.chrome.com/docs/extensions/reference/sidePanel/
-*/
