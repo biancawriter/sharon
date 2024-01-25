@@ -54,7 +54,6 @@ function clickFirstShare() {
 
   if(itemStatus === null) {
     itemToShare.click(); 
-   // console.log(shareLinkCount); 
     itemName = itemToShare.closest(".card").querySelector(".tile__title").innerHTML; //Set the name of the item that's about to be shared.
 
   
@@ -69,10 +68,16 @@ else{
 
 //Function to click both buttons after the process has started.
 function afterFirstShare() {
+  if (cancelled) { //test. this didn't seem to work. 
+    console.log('All done!');
+    return;
+  }
+  else{ 
   --shareLinkCount;
   setTimeout(shareToFollowers, waitForSecondClick); //Click the 2nd share button in 2 sec.
   setTimeout(endOrContinue, 3000);
   }
+}
 
 clickFirstShare(); //after defining the functions, call the starting one.
 }
