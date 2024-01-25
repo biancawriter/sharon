@@ -16,13 +16,6 @@ chrome.runtime.onMessage.addListener((message) => {
   }
 });
 
-// Click "Share to My Followers" in extension to click "Share" for the last visible listing on the page. This works! 
-chrome.runtime.onMessage.addListener((message) => {
-  if (message.type === "share-to-followers") {
-    clickShareButton(); //not sure if this will work
-  }
-});
-
 //Function to click both buttons
 function waitForElement(selector) {
   var element = document.querySelector(selector);
@@ -49,7 +42,12 @@ function clickShareButton() {
 
 var shareLinkCount = document.querySelectorAll('.share-gray-large').length - 1; //creates variable for identifying the 1st share, and then cycling through all elements with this style.
 
-
+// Click "Share My Listings" in extension to click "Share" for the last visible listing on the page.
+chrome.runtime.onMessage.addListener((message) => {
+  if (message.type === "share-my") {
+    clickShareButton();
+  }
+});
 
 
 
