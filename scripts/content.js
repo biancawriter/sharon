@@ -65,7 +65,7 @@ function waitForElement(selector) {
       element.click();
 
       if (shareLinkCount) { // not 0, this is the 1st share 
-          setTimeout(clickShareButton, 6000);
+          setTimeout(clickShareButton, 10000);
       }
       else{
           element.click();
