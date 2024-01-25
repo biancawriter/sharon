@@ -29,13 +29,13 @@ var shareLinkCount = document.querySelectorAll('.share-gray-large').length - 1;
 
 function endOrContinue () {
 
-  if (cancelled) { // test
-    console.log('All done!');
-    alert("Nothin' to see here, folks!");
-    return;
-  }
+ // if (cancelled) { // test
+//    console.log('All done!');
+//    alert("All done sharin' for now!");
+//    return;
+//  }
 
-  else{
+//  else{
 
   if(shareLinkCount < 0) {
     setTimeout(function2, waitForFirstClick);
@@ -44,15 +44,15 @@ function endOrContinue () {
     setTimeout(clickFirstShare, waitForFirstClick); //Call the clickFirstShare function in 15 sec to re-start the cycle.
   }
 }
-}
+//}
 
 function shareToFollowers () {
 
-  if (cancelled) { // test
-    console.log('All done!');
-    alert("Nothin' to see here, folks!");
-    return;
-  }
+//  if (cancelled) { // test
+//    console.log('All done!');
+//    alert("Nothin' to see here, folks!");
+//    return;
+//  }
 
   document.querySelector('.internal-share__link').click();
   console.log(shareLinkCount); //Print the NodeList position of the item that was just shared. 
@@ -66,7 +66,7 @@ function clickFirstShare() {
 
  if (cancelled) {
    console.log('All done!');
-   alert("Nothin' to see here, folks!");
+   alert("Done sharin' for now!");
   return;
   }
 
@@ -86,11 +86,11 @@ else{
 
 //Function to click both buttons after the process has started.
 function afterFirstShare() {
-  if (cancelled) { // test
-    console.log('All done!');
-    alert("Nothin'vto see here, folks!");
-    return;
-  }
+//  if (cancelled) { // test
+//    console.log('All done!');
+//    alert("Nothin'vto see here, folks!");
+//    return;
+//  }
   --shareLinkCount;
   setTimeout(shareToFollowers, waitForSecondClick); //Click the 2nd share button in 2 sec.
   setTimeout(endOrContinue, 3000);
