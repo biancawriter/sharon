@@ -1,10 +1,3 @@
-//chrome.runtime.onMessage.addListener((message) => {
-//  if (message.type === "change-color") {
-//    document.body.style.backgroundColor = "red";
-//  }
-//});
-
-
 
 // Click "Learn about me" in extension to click "About" on the page.
 chrome.runtime.onMessage.addListener((message) => {
@@ -16,32 +9,6 @@ for(var i = 0; i < about.length; i++)
 });
 
 
-// Click "Share Your Listings" in extension to click "Share" for the last visible listing on the page. This works. 
-//commenting this out as a test
-//chrome.runtime.onMessage.addListener((message) => {
-//  if (message.type === "share-my") {
-//var listing = document.getElementsByClassName("d--fl ai--c social-action-bar__action social-action-bar__share");
-//for(var i = 0; i < listing.length; i++)
-//{listing[i].click();}
-//  }
-//});
-
-// Click "Share to My Followers" in extension to click "Share" for the last visible listing on the page. This works! 
-chrome.runtime.onMessage.addListener((message) => {
-  if (message.type === "share-to-followers") {
-    document.getElementsByClassName('internal-share__link')[0].click();
-  }
-});
-
-// try using functions to click the share buttons. This works!
-// Click "Share Your Listings" in extension to click "Share" for the last visible listing on the page.
-//Somehow, having this in the code causes the function waitForElement function to run; I don't even click the button! Will need to fix this.
-chrome.runtime.onMessage.addListener((message) => {
-  if (message.type === "share-my") {
-    waitForElement();
-  }
-});
-
 // Click "Stop All Sharing" in extension to stop all sharing. Doesn't work: clickShareButton, shareLinkCount, element. Need to figure out how to fix this. Although the issue might be with the "Share My" button, and NOT with this snippet.
 chrome.runtime.onMessage.addListener((message) => {
   if (message.type === "stop-sharing") {
@@ -49,13 +16,12 @@ chrome.runtime.onMessage.addListener((message) => {
   }
 });
 
-//Function to click the 1st button in the Share process. This works!
-//comment out to test querySelector
-//function shareMy1() {
-//  var listing = document.getElementsByClassName("d--fl ai--c social-action-bar__action social-action-bar__share");
-// for(var i = 0; i < listing.length; i++)
-//  {listing[i].click();}
-//}
+// Click "Share to My Followers" in extension to click "Share" for the last visible listing on the page. This works! 
+chrome.runtime.onMessage.addListener((message) => {
+  if (message.type === "share-to-followers") {
+    clickShareButton(); //not sure if this will work
+  }
+});
 
 //Function to click both buttons
 function waitForElement(selector) {
@@ -72,7 +38,7 @@ function waitForElement(selector) {
           alert('Click Finished');
       }
   } else {
-      setTimeout(waitForElement, 2000, selector);
+      setTimeout(waitForElement, 2000, selector); //this is the 2nd share
   }
 }
 
@@ -81,25 +47,19 @@ function clickShareButton() {
   waitForElement('.internal-share__link');
 }
 
-var shareLinkCount = document.querySelectorAll('.share-gray-large').length - 1;
-
-//const notSold
+var shareLinkCount = document.querySelectorAll('.share-gray-large').length - 1; //creates variable for identifying the 1st share, and then cycling through all elements with this style.
 
 
-clickShareButton();
 
 
-//Function to click the 2nd button in the Share process. This works!
-function shareMy2() {
-  var shareToFollowers = document.getElementsByClassName('internal-share__link');
-  for(var i = 0; i < shareToFollowers.length; i++)
-  {shareToFollowers[i].click();}
-}
-
-//Create a callback so that one function triggers the next.
 
 //Next tasks:
-//String together 2 clicks: click share, detect that the pop-up is open, and then click other share.
-//Continue to share multiple listings
-//Set a limit
+//MVP:
+//Continue to share listings when you get through the first cycle
 //Only share Available listings
+//Make "Stop Sharing" work
+//Avoid the "click finished" pop-up. This is an alert in the code.
+//Make sure the clicking is only triggered by clicking the button, and not by just being on the page
+//Might have to re-add calling the clickShareButton() function
+//Later: 
+//Respond to "captcha": Make a sound, send an email....
