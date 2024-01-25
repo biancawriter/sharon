@@ -72,7 +72,7 @@ function waitForElement(selector) {
           alert('Click Finished');
       }
   } else {
-      setTimeout(waitForElement, 1000, selector);
+      setTimeout(waitForElement, 2000, selector);
   }
 }
 
