@@ -32,6 +32,15 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+document.addEventListener("DOMContentLoaded", () => {
+  const buttonStop = document.getElementById("scroll");
+  buttonStop.addEventListener("click", () => {
+    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+      chrome.tabs.sendMessage(tabs[0].id, { type: "scroll-to-bottom" });
+    });
+  });
+});
+
 //function myFunction() {
 //	var elements = document.getElementsByClassName("d--fl ai--c social-action-bar__action social-action-bar__share"); // get all elements
 //	for(var i = 0; i < elements.length; i++){
