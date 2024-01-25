@@ -22,12 +22,30 @@ for(var i = 0; i < about.length; i++)
   }
 });
 
+// Click "Share to My Followers" in extension to click "Share" for the last visible listing on the page. Attempted to use jquery to get the a element by data-et-name. Doesn't work yet.
+chrome.runtime.onMessage.addListener((message) => {
+  if (message.type === "share-to-followers") {
+  const el1 = document.querySelector('[data-et-name="share_poshmark"]');
+  document.el1.click();
+  }
+});
+
+///
+// Click "Share to My Followers" in extension to click "Share" for the last visible listing on the page.
+//chrome.runtime.onMessage.addListener((message) => {
+  if (message.type === "share-to-followers") {
+//var about = document.getElementsByClassName("internal-share__link");
+//for(var i = 0; i < about.length; i++)
+//{about[i].click();}
+//  }
+//});
+
 //Attempting to detect the share pop-up window. Do more research on: https://developer.chrome.com/docs/extensions/reference/windows/#event-onCreated. 
 //Should detect the specific pop-up, and then click the To My Followers icon.
-chrome.windows.onCreated.addListener(
-  callback: function,
-  filters: "popup",
-)
+//chrome.windows.onCreated.addListener(
+//  callback: function,
+//  filters: "popup",
+//)
 
 
 //chrome.runtime.onMessage.addListener((message) => 
