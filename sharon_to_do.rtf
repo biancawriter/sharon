@@ -2,7 +2,7 @@
 \cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
 {\*\expandedcolortbl;;}
-{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{hyphen\}}{\leveltext\leveltemplateid2\'01\uc0\u8259 ;}{\levelnumbers;}\fi-360\li1440\lin1440 }{\listname ;}\listid1}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}
 {\list\listtemplateid2\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid101\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid2}
 {\list\listtemplateid3\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid201\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid3}}
 {\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}{\listoverride\listid3\listoverridecount0\ls3}}
@@ -13,17 +13,16 @@
 \
 MVP:\
 \pard\tx220\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\fi-720\pardirnatural\partightenfactor0
-\ls1\ilvl0\cf0 {\listtext	\uc0\u8226 	}Only share Available listings: \
-\pard\tx940\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\fi-1440\pardirnatural\partightenfactor0
-\ls1\ilvl1\cf0 {\listtext	\uc0\u8259 	}(will need to create a list of all \'93inventory tags\'94 like \'93icon tile__inventory-tag sold-tag"\
-\pard\tx220\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\fi-720\pardirnatural\partightenfactor0
-\ls1\ilvl0\cf0 {\listtext	\uc0\u8226 	}\'93scroll down\'94 to see all items, including for 100s of listings.\
+\ls1\ilvl0\cf0 {\listtext	\uc0\u8226 	}QA the sold-out tag. Find something that is available in multiples. \
+{\listtext	\uc0\u8226 	}Share the \'93last\'94 item in the list (which is the top left item). I think this is skipped because its position is 0.\
+{\listtext	\uc0\u8226 	}\'93scroll down\'94 to see all items, including for 100s of listings.\
 {\listtext	\uc0\u8226 	}Make "Stop Sharing" work\
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
 \cf0 \
 Later: \
 \pard\tx220\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\fi-720\pardirnatural\partightenfactor0
 \ls2\ilvl0\cf0 {\listtext	\uc0\u8226 	}Wait until after the 2nd click to log an items as shared. \
+{\listtext	\uc0\u8226 	}Add a timestamp to console.\
 {\listtext	\uc0\u8226 	}Respond to "captcha": Make a sound, send an email....\
 {\listtext	\uc0\u8226 	}Run when computer is asleep: {\field{\*\fldinst{HYPERLINK "https://stackoverflow.com/questions/9206982/run-chrome-extension-in-the-background?rq=4"}}{\fldrslt https://stackoverflow.com/questions/9206982/run-chrome-extension-in-the-background?rq=4}} \
 {\listtext	\uc0\u8226 	}Add a log to the UI that shows shared listings w/ timestamps. \
@@ -33,7 +32,8 @@ Later: \
 \cf0 \
 Completed:\
 \pard\tx220\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\fi-720\pardirnatural\partightenfactor0
-\ls3\ilvl0\cf0 {\listtext	\uc0\u8226 	}Avoid the "click finished" pop-up. This is an alert in the code.\
+\ls3\ilvl0\cf0 {\listtext	\uc0\u8226 	}Shares only available listings!!! \
+{\listtext	\uc0\u8226 	}Avoid the "click finished" pop-up. This is an alert in the code.\
 {\listtext	\uc0\u8226 	}Make sure the clicking is only triggered by clicking the button, and not by just being on the page\
 {\listtext	\uc0\u8226 	}Runs in order\
 {\listtext	\uc0\u8226 	}Restarts the cycle\

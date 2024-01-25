@@ -25,8 +25,6 @@ var waitForSecondClick = 2000;
 
 function function2 () {
 var shareLinkCount = document.querySelectorAll('.share-gray-large').length - 1;
-//var itemToShare = document.querySelectorAll('.share-gray-large')[shareLinkCount];
-//var itemName = document.querySelectorAll('.share-gray-large')[shareLinkCount].closest(".card").querySelector(".tile__title").innerHTML; 
 
 
 function endOrContinue () {
@@ -42,13 +40,14 @@ function shareToFollowers () {
   document.querySelector('.internal-share__link').click();
 }
 
-function clickFirstShare() { //Defines how the clickFirstShare function works.  
-  var itemStatus = document.querySelectorAll('.share-gray-large')[shareLinkCount].closest(".card").querySelector(".sold-tag"); //if the item is NOT sold, returns "null"
+function clickFirstShare() {  
+  var itemToShare = document.querySelectorAll('.share-gray-large')[shareLinkCount]; //First, it creates a NodeList of all elements with the attribute '.share-gray-large'. Second, it picks an item from the NodeList based on the # returned by the shareLinkCount variable.
+  var itemStatus = itemToShare.closest(".card").querySelector(".sold-tag, .sold-out-tag, .not-for-sale-tag"); //if the item is NOT sold, returns "null"
 
   if(itemStatus === null) {
-    document.querySelectorAll('.share-gray-large')[shareLinkCount].click(); //First, it creates a NodeList of all elements with the attribute '.share-gray-large'. Second, it picks an item from the NodeList based on the # returned by the shareLinkCount variable. Third, it clicks that item.
+    itemToShare.click(); 
     console.log(shareLinkCount); 
-    console.log(document.querySelectorAll('.share-gray-large')[shareLinkCount].closest(".card").querySelector(".tile__title").innerHTML); 
+    console.log(itemToShare.closest(".card").querySelector(".tile__title").innerHTML); 
   
     afterFirstShare();//Calls the afterFirstShare function.
 }
