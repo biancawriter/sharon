@@ -1,20 +1,26 @@
-// Need to figure out how to add JS to the 2nd button
-
-const tabs = await chrome.tabs.query({
-  url: [
-    'https://developer.chrome.com/docs/webstore/*',
-    'https://developer.chrome.com/docs/extensions/*'
-  ]
+document.addEventListener("DOMContentLoaded", () => {
+  const button = document.getElementById("about");
+  button.addEventListener("click", () => {
+    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+      chrome.tabs.sendMessage(tabs[0].id, { type: "about-me" });
+    });
+  });
+});
+document.addEventListener("DOMContentLoaded", () => {
+  const button = document.getElementById("sharemy");
+  button.addEventListener("click", () => {
+    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+      chrome.tabs.sendMessage(tabs[0].id, { type: "share-my" });
+    });
+  });
 });
 
-document.getElementById("shareyour").addEventListener("click", myFunction);
-
-function myFunction() {
-	var elements = document.getElementsByClassName("d--fl ai--c social-action-bar__action social-action-bar__share"); // get all elements
-	for(var i = 0; i < elements.length; i++){
-		elements[i].style.backgroundColor = "blue";
-	}
-}
+//function myFunction() {
+//	var elements = document.getElementsByClassName("d--fl ai--c social-action-bar__action social-action-bar__share"); // get all elements
+//	for(var i = 0; i < elements.length; i++){
+//		elements[i].style.backgroundColor = "blue";
+//	}
+//}
 
 //function myFunction(){
 //  document.getElementById("shareyour").style.color = "blue";
